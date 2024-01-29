@@ -3,13 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Application</title>
-</head>
-<body>
+    <title>{%block title %}Chat Application {%endblock title %}</title>
 
-    <div class="bg-teal-600">
-        CHAT
-    </div>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            font-family: 'Cherry Swash', cursive;
+        }
+    </style>
+</head>
+<body class="bg-teal-600">
+
+    <nav class="flex items-center justify-between px-4 py-6 bg-teal-800">
+        <div>
+            <a href="/" class="text-xl text-white">Home</a>
+        </div>
+
+        <div class="flex items-center space-x-4">
+            <a href="/login/" class="text-white hover:text-gray-200">Login</a>
+
+            <a href="/signup/" class="text-white px-5 py-3 rounded-xl bg-teal-600 hover:bg-teal-700">Sign UP</a>
+        </div>
+    </nav>
+
+    {% block content %}
+
+    {%endblock content %}
+
+    
     
 
     <script src="https://cdn.tailwindcss.com"></script>
