@@ -1,12 +1,12 @@
 {% extends 'chat/base.html' %}
 
-{% block title %}Signup{% endblock %}
+{% block title %}Login{% endblock %}
 
 
 {% block content %}
 <div class="p-10 lg:p-20 text-center">
     <div class="text-3xl lg:text-6xl text-white">
-        Sign Up        
+        Login        
     </div>
 </div>
 
@@ -21,12 +21,8 @@
         <input type="password" name="password" class="w-full mt-2px-4 py-2 rounded-xl">
     </div>
 
-    <div class="mb-5">
-        <label for="" class="text-white">Confirm Password</label>
-        <input type="password" name="confirm_password" class="w-full mt-2px-4 py-2 rounded-xl">
-    </div>
 
-    <button onclick="signup()" class="px-5 py-3 rounded-xl text-white bg-teal-800 hover:bg-teal-700">
+    <button onclick="submitForm()" class="px-5 py-3 rounded-xl text-white bg-teal-800 hover:bg-teal-700">
         Submit
     </button>
 </div>
@@ -36,10 +32,10 @@
 
 {% block script %}
 <script>
-    function signup() {
+    function submitForm() {
        
 
-        fetch('/signup/', {
+        fetch('/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,13 +44,12 @@
             body: JSON.stringify({
                 username: document.getElementsByName('username')[0].value,
                 password: document.getElementsByName('password')[0].value,
-                confirm_password: document.getElementsByName('confirm_password')[0].value
             })
         })
         .then(response => response.json())
         .then(data => {
             if (data.status == 'success') {
-                window.location.href = '/login/'
+                window.location.href = '/rooms/'
             } else {
                 alert("need to add validation")
             }

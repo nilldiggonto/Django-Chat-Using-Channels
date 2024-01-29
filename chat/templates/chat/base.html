@@ -22,11 +22,23 @@
             <a href="/" class="text-xl text-white">Home</a>
         </div>
 
+        {% if request.user.is_authenticated %}
+        <div class="flex items-center space-x-4">
+            <a href="/rooms/" class="text-white hover:text-gray-200">Chat Room</a>
+
+            <a href="/logout/" class="text-white px-5 py-3 rounded-xl bg-teal-600 hover:bg-teal-700">Logout</a>
+        </div>
+
+        {%else %}
         <div class="flex items-center space-x-4">
             <a href="/login/" class="text-white hover:text-gray-200">Login</a>
 
             <a href="/signup/" class="text-white px-5 py-3 rounded-xl bg-teal-600 hover:bg-teal-700">Sign UP</a>
         </div>
+
+        {% endif %}
+
+        
     </nav>
 
     {% block content %}
@@ -37,5 +49,9 @@
     
 
     <script src="https://cdn.tailwindcss.com"></script>
+
+    {%block script %}
+
+    {%endblock script %}
 </body>
 </html>
